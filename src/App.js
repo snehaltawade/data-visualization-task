@@ -8,23 +8,24 @@ function App() {
   const filteredWine = classBasedFilter(wineData)
   const flavanoidsHeaders = ['Flavanoids Mean', 'Flavanoids Median', 'Flavanoids Mode']
   const gammaHeaders = ['Gamma Mean', 'Gamma Median', 'Gamma Mode']
-  calculateGamma(filteredWine[1])
   const tableHeaders = () => {
     return <thead>
-      <td>Measure</td>
+      <tr>
+      <th>Measure</th>
       {filteredWine?.map((item, index) => {
-        return <td>{`Class ${index}`}</td>
+        return <th key={index}>{`Class ${index}`}</th>
 
       })}
+      </tr>
     </thead>
   }
   const meanValues = (property) => {
     return <>
       {filteredWine?.map((item, index) => {
         if (property == 'Gamma') {
-          return <td>{mean(calculateGamma(filteredWine[index])).toFixed(3)}</td>
+          return <td key={index}>{mean(calculateGamma(filteredWine[index])).toFixed(3)}</td>
         }
-        return <td>{mean(filterProperty(filteredWine[index], property)).toFixed(3)}</td>
+        return <td key={index}>{mean(filterProperty(filteredWine[index], property)).toFixed(3)}</td>
       })}
     </>
   }
@@ -33,9 +34,9 @@ function App() {
     return <>
       {filteredWine?.map((item, index) => {
         if (property == 'Gamma') {
-          return <td>{median(calculateGamma(filteredWine[index])).toFixed(3)}</td>
+          return <td key={index}>{median(calculateGamma(filteredWine[index])).toFixed(3)}</td>
         }
-        return <td>{median(filterProperty(filteredWine[index], property)).toFixed(3)}</td>
+        return <td key={index}>{median(filterProperty(filteredWine[index], property)).toFixed(3)}</td>
       })}
     </>
   }
@@ -44,9 +45,9 @@ function App() {
     return <>
       {filteredWine?.map((item, index) => (
         <>
-          {property != "Gamma" && <td>{mode(filterProperty(filteredWine[index], property)).join(',  ')}</td>}
+          {property != "Gamma" && <td key={index}>{mode(filterProperty(filteredWine[index], property)).join(',  ')}</td>}
 
-          {property == "Gamma" && <td>{mode(calculateGamma(filteredWine[index])).join(',  ')}</td>}
+          {property == "Gamma" && <td key={index}>{mode(calculateGamma(filteredWine[index])).join(',  ')}</td>}
 
         </>
 
@@ -56,17 +57,18 @@ function App() {
   }
 
   const tableRows = (headers, property) => {
-    console.log(property)
     let mean = meanValues(property)
     return <>
       <tr>
-        <td>{headers[0]}</td>
-        {mean}</tr>
+        <th>{headers[0]}</th>
+        {meanValues(property)}
+      </tr>
       <tr>
-        <td>{headers[1]}</td>
-        {medianValues(property)}</tr>
+        <th>{headers[1]}</th>
+        {medianValues(property)}
+      </tr>
       <tr>
-        <td>{headers[2]}</td>
+        <th>{headers[2]}</th>
         {modeValues(property)}</tr>
     </>
 
@@ -78,16 +80,20 @@ function App() {
     <div className="App">
       <div>
         <h2>Flavanoids</h2>
-        <table>
+        <table>    
           {tableHeaders()}
+          <tbody>
           {tableRows(flavanoidsHeaders, 'Flavanoids')}
+          </tbody>
         </table>
       </div>
       <div>
         <h2>Gamma</h2>
-        <table>
+        <table>      
           {tableHeaders()}
+          <tbody>
           {tableRows(gammaHeaders, 'Gamma')}
+          </tbody>
         </table>
       </div>
 
