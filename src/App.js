@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { calculateGamma, classBasedFilter, filterProperty, mean, median, mode } from './util/utils';
 import wineData from './data/Wine-Data.json';
+import TaskTable from './components/taskTable';
 
 function App() {
 
@@ -86,25 +87,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <h2>Flavanoids</h2>
-        <table>    
-          {tableHeaders()}
-          <tbody>
-          {tableRows(flavanoidsHeaders, 'Flavanoids')}
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <h2>Gamma</h2>
-        <table>      
-          {tableHeaders()}
-          <tbody>
-          {tableRows(gammaHeaders, 'Gamma')}
-          </tbody>
-        </table>
-      </div>
-
+      <TaskTable/>
 
     </div>
   );
