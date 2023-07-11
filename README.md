@@ -13,5 +13,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 Output ScreenShots
-![Flavonoids](/data-visualization-task/src/assets/Flavonoids.JPG)
-![Gamma](/data-visualization-task/src/assets/Gamma.JPG)
+![Flavonoids](src/assets/Flavonoids.JPG)
+![Gamma](src/assets/Gamma.JPG)
