@@ -5,9 +5,13 @@ import wineData from './data/Wine-Data.json';
 
 function App() {
 
+//to filter dataset based on class
   const filteredWine = classBasedFilter(wineData)
+
   const flavanoidsHeaders = ['Flavanoids Mean', 'Flavanoids Median', 'Flavanoids Mode']
   const gammaHeaders = ['Gamma Mean', 'Gamma Median', 'Gamma Mode']
+
+  //table header
   const tableHeaders = () => {
     return <thead>
       <tr>
@@ -19,6 +23,8 @@ function App() {
       </tr>
     </thead>
   }
+
+  //row of mean values
   const meanValues = (property) => {
     return <>
       {filteredWine?.map((item, index) => {
@@ -30,6 +36,7 @@ function App() {
     </>
   }
 
+   //row of median values
   const medianValues = (property) => {
     return <>
       {filteredWine?.map((item, index) => {
@@ -41,6 +48,7 @@ function App() {
     </>
   }
 
+  // //row of mode values
   const modeValues = (property) => {
     return <>
       {filteredWine?.map((item, index) => (

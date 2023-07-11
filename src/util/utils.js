@@ -1,3 +1,4 @@
+//mean
 export const mean = (arrayOfNumbers) => {
     let sum = 0;
     let arrayLen = arrayOfNumbers.length
@@ -6,6 +7,7 @@ export const mean = (arrayOfNumbers) => {
     return sum / arrayLen;
 }
 
+//mode
 export const mode = (arrayOfNumbers) => {
     let mode = 0, max = 0, k = 0, total = 0, arrayLen = arrayOfNumbers.length;
     let modeArray = []
@@ -38,6 +40,8 @@ export const mode = (arrayOfNumbers) => {
         return modeArray;
     }
 }
+
+//median
 export const median = (a) => {
     let sortedArray = sort(a, a.length)
     let n = a.length
@@ -68,6 +72,7 @@ export const sort = (arr, n) => {
     return arr;
 }
 
+//function to filter dataset and divinde in classes
 export const classBasedFilter = (myData) => {
 
     const filteredArray = myData.reduce((classBasedArray, data) => {
@@ -84,6 +89,7 @@ export const classBasedFilter = (myData) => {
     return filteredArray;
 }
 
+//function to extarct values based on property ex.Flavanoids
 export const filterProperty = (data, property) => {
     let result = []
     data.forEach(element => {
@@ -92,12 +98,7 @@ export const filterProperty = (data, property) => {
     return result
 }
 
-const parseStringNumbers = (array) => {
-    var numberArray = [];
-    for (var i = 0; i < array.length; i++) { numberArray.push(parseInt(array[i])) }
-    return numberArray
-}
-
+//function to calculate gamma value and return gamma list
 export const calculateGamma = (data) => {
     let result = []
     data.forEach(element => {
